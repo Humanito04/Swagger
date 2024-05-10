@@ -1,0 +1,138 @@
+openapi: 3.0.1
+info:
+  title: API que se encarga de los proyectos
+  description: Esta API se ancarga de manejar la informaciÃ³n de la empresa MoonTravels.
+  version: 1.0.0
+tags:
+- name: proyectos
+  description: Este endpoint maneja toda la informacion relacionada con la informacion de los proyectos.
+  
+paths:
+  /project:
+    get:
+      summary: Inserta la información de un nuevo proyecto.
+      responses:
+        200:
+          description: Información del proyecto obtenida.
+    post:
+      summary: Creación de un nuevo proyecto.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ID:
+                  type: integer
+                description:
+                  type: string
+                language:
+                  type: string
+                open:
+                  type: boolean
+      responses:
+        200:
+          description: Proyecto creado correctamente.
+          
+  /project/{projectId}:
+    get:
+      summary: Obtener un proyecto a traves de un ID
+      parameters:
+      - in: path
+        name: projectId
+        required: true
+        schema:
+          type: integer
+        responses:
+          200:
+            description: Proyecto obtenido correctamente.
+    
+    put:
+      summary: Actualización de un proyecto creado.
+      parametres:
+        in: path
+        name: projectId
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ID:
+                  type: integer
+                description:
+                  type: string
+                language:
+                  type: string
+                open:
+                  type: boolean
+      responses:
+        200:
+          description: Proyecto actualizado.
+          
+    delete:
+      summary: Eliminar un proyecto a través de su ID
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          schema:
+            type: integer
+      responses:
+        202:
+          description: Proyecto eliminado.
+          
+  /project/code/{projectId}: 
+   
+    get:
+      summary: Obtención del codigo del proyecto
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Código del proyecto obtenido.
+
+  /project/users/{projectId}:
+    get:
+      summary: Obtiene los usuarios que acceden al proyecto
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Usuarios del proyecto obtenidos correctamente
+  
+  
+  /project/detail/{projectId}:
+    get:
+      summary: Obtiene los detalles de un proyecto
+      parameters:
+      - in: path
+        name: projectId
+        required: true
+        schema:
+          type: integer
+        responses:
+          200:
+            descripction: Detalles del proyecto obtenidos correctamente.
+        
+        
+        
+        
+        
+        
+        
+        
+        
